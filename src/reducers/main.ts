@@ -18,6 +18,7 @@ export const mainSlice = createSlice({
     initialState,
     reducers: {
         setFiles: (state, action: PayloadAction<string[]>) => {
+            console.log("action2: ", action);
             state.files = action.payload;
         },
         setDogUsage: (state, action: PayloadAction<number>) => {
@@ -53,8 +54,9 @@ export const addDoge = (): AppThunk => async (dispatch, rootStore) => {
     dispatch(setDogUsage(value));
 }
 
-export const addNewFile = (): AppThunk => async () => {
-    return Filesystem.writeFile({path: Math.random().toString(), data: "kek"}).then()
+export const addNewFile = (): AppThunk => async (dispatch, rootStore) => {
+    await Filesystem.writeFile({path: `${DATA_STORAGE}/${Math.random().toString()}` , data: "kek"}).then()
+    await dispatch(setFiles(await listFiles()))
 }
 
 

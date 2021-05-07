@@ -36,13 +36,12 @@ const Tab1: React.FC = () => {
                         <IonTitle size="large">Tab 1</IonTitle>
                     </IonToolbar>
                 </IonHeader>
-                <ExploreContainer name="Tab 1 page"/>
                 <DiscUsageBar dogUsage={dogUsage}/>
-                <IonButton color="primary" onClick={addDogeClicked}>Add doges</IonButton>
-                <IonButton color="primary" onClick={addNewFileClicked}>Add file</IonButton>
                 <pre>
                     {JSON.stringify(files)}
                 </pre>
+                <IonButton color="primary" onClick={addDogeClicked}>Add doges</IonButton>
+                <IonButton color="primary" onClick={addNewFileClicked}>Add file</IonButton>
             </IonContent>
         </IonPage>
     );
