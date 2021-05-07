@@ -39,11 +39,11 @@ const Tab1: React.FC = () => {
                     </IonToolbar>
                 </IonHeader>
                 <DiscUsageBar dogUsage={dogUsage}/>
-                <IonButton color="primary" onClick={addDogeClicked}>Add doges</IonButton>
-                <IonButton color="primary" onClick={addNewFileClicked}>Add file</IonButton>
                 <pre>
                     {JSON.stringify(files)}
                 </pre>
+                <IonButton color="primary" onClick={addDogeClicked}>Add doges</IonButton>
+                <IonButton color="primary" onClick={addNewFileClicked}>Add file</IonButton>
             </IonContent>
         </IonPage>
     );
