@@ -30,12 +30,12 @@ const DiscUsageBar: React.FC<ContainerProps> = ({dogUsage}) => {
     let ratio = (total - free) / total;
 
     return (
-        <div>
+        <div className={'DiskUsageBar-container'}>
             <div>
-                <pre>
-                    {JSON.stringify(info, undefined, 2)}
-                </pre>
-                <pre>{JSON.stringify(dogUsage, undefined, 2)}</pre>
+                {/*<pre>*/}
+                {/*    {JSON.stringify(info, undefined, 2)}*/}
+                {/*</pre>*/}
+                {/*<pre>{JSON.stringify(dogUsage, undefined, 2)}</pre>*/}
             </div>
 
             <IonProgressBar value={withoutDogsRatio} buffer={ratio}></IonProgressBar><br/>

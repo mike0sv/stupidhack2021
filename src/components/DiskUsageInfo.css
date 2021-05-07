@@ -1,21 +1,24 @@
 .DiskUsageInfo-container {
-    background-color: #d1717b;
+    /*background-color: #d1717b;*/
     padding: 10px;
     display: inline-flex;
     width: 100%
 }
 
 .DiskUsageInfo-label-wrapper {
-    flex-grow: 0;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /*justify-content: center;*/
 }
 .DiskUsageInfo-label {
+    margin-bottom: 8px;
     justify-self: center;
     text-align: center;
     font-weight: 800;
     text-transform: uppercase;
+    color: gray;
+    margin-top: 8px;
 }
 .DiskUsageInfo-slider {
     flex-grow: 1;
@@ -43,5 +46,6 @@
     top: 7px;
 }
 .DiskUsageInfo-number {
-    margin-top: 8px;
+    text-align: center;
+    font-size: 28px;
 }

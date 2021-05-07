@@ -1,3 +1,8 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+
+.Tab1-button-centered {
+  display: flex;
+  justify-content: center;
+}
