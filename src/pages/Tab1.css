@@ -5,4 +5,5 @@ ion-content ion-toolbar {
 .Tab1-button-centered {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
