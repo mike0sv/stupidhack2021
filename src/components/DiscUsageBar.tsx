@@ -1,19 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import './DiscUsageBar.css';
-import { IonProgressBar, IonContent } from '@ionic/react';
-import {Plugins} from "@capacitor/core";
+import {IonProgressBar, IonContent} from '@ionic/react';
+import {DeviceInfo, Plugins} from "@capacitor/core";
 
 interface ContainerProps {
-
+    dogUsage: number
 }
-const { Device } = Plugins;
+
+const {Device} = Plugins;
 
 
+const DiscUsageBar: React.FC<ContainerProps> = ({dogUsage}) => {
 
-
-const DiscUsageBar: React.FC<ContainerProps> = ({  }) => {
-
-    const [info, setInfo] = useState<any>(null)
+    const [info, setInfo] = useState<DeviceInfo | null>(null)
 
     useEffect(() => {
         async function getInfo() {
@@ -24,27 +23,23 @@ const DiscUsageBar: React.FC<ContainerProps> = ({  }) => {
         getInfo()
     }, [])
 
+    let total = info?.diskTotal ?? 1000;
+    let free = info?.diskFree ?? 500;
+    let withoutDogs = total - free - dogUsage;
+    let withoutDogsRatio = withoutDogs / total;
+    let ratio = (total - free) / total;
+
     return (
         <IonContent>
             <div>
                 <pre>
                     {JSON.stringify(info, undefined, 2)}
                 </pre>
+                <pre>{JSON.stringify(dogUsage, undefined, 2)}</pre>
             </div>
-            {/*-- Default Progressbar --*/}
-            <IonProgressBar></IonProgressBar><br />
 
-            {/*-- Default Progressbar with 50 percent --*/}
-            <IonProgressBar value={0.5}></IonProgressBar><br />
+            <IonProgressBar value={withoutDogsRatio} buffer={ratio}></IonProgressBar><br/>
 
-            {/*-- Colorize Progressbar --*/}
-            <IonProgressBar color="primary" value={0.5}></IonProgressBar><br />
-            <IonProgressBar color="secondary" value={0.5}></IonProgressBar><br />
-
-            {/*-- Other types --*/}
-            <IonProgressBar value={0.25} buffer={0.5}></IonProgressBar><br />
-            <IonProgressBar type="indeterminate"></IonProgressBar><br />
-            <IonProgressBar type="indeterminate" reversed={true}></IonProgressBar><br />
         </IonContent>
     )
 };
