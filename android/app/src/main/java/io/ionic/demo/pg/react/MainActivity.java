@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package io.ionic.demo.pg.react;
 
 import android.os.Bundle;
 
