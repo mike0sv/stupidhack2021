@@ -5,6 +5,7 @@ import './Tab1.css';
 import DiscUsageBar from "../components/DiscUsageBar";
 import { useDispatch, useSelector } from 'react-redux';
 import { addDoge, addNewFile, selectDogUsage, selectFiles } from '../reducers/main';
+import DogLogo from '../components/DogLogo';
 
 
 
@@ -25,18 +26,18 @@ const Tab1: React.FC = () => {
 
     return (
         <IonPage>
-            <IonHeader>
-                <IonToolbar>
-                    <IonTitle>Tab 1</IonTitle>
-                </IonToolbar>
-            </IonHeader>
+            {/*<IonHeader>*/}
+            {/*    <IonToolbar>*/}
+            {/*        <IonTitle>Tab 1</IonTitle>*/}
+            {/*    </IonToolbar>*/}
+            {/*</IonHeader>*/}
             <IonContent>
+                <DogLogo/>
                 <IonHeader collapse="condense">
                     <IonToolbar>
                         <IonTitle size="large">Tab 1</IonTitle>
                     </IonToolbar>
                 </IonHeader>
-                <ExploreContainer name="Tab 1 page"/>
                 <DiscUsageBar dogUsage={dogUsage}/>
                 <IonButton color="primary" onClick={addDogeClicked}>Add doges</IonButton>
                 <IonButton color="primary" onClick={addNewFileClicked}>Add file</IonButton>
