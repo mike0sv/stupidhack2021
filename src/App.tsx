@@ -37,9 +37,12 @@ import './theme/variables.css';
 
 /* Global CSS */
 import './global.css';
+import { Provider } from 'react-redux';
+import { store } from './app/store';
 
 const App: React.FC = () => (
   <IonApp>
+    <Provider store={store}>
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
@@ -65,6 +68,7 @@ const App: React.FC = () => (
         </IonTabBar>
       </IonTabs>
     </IonReactRouter>
+    </Provider>
   </IonApp>
 );
 
