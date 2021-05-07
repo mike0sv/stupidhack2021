@@ -6,6 +6,7 @@ import DiscUsageBar from "../components/DiscUsageBar";
 import { useDispatch, useSelector } from 'react-redux';
 import { addDoge, addNewFile, selectDogUsage, selectFiles } from '../reducers/main';
 import DogLogo from '../components/DogLogo';
+import DiskUsageInfo from '../components/DiskUsageInfo';
 
 
 
@@ -33,6 +34,7 @@ const Tab1: React.FC = () => {
             {/*</IonHeader>*/}
             <IonContent>
                 <DogLogo/>
+                <DiskUsageInfo />
                 <IonHeader collapse="condense">
                     <IonToolbar>
                         <IonTitle size="large">Tab 1</IonTitle>

@@ -39,6 +39,8 @@
     /*height: 270px;*/
     position: absolute;
     width: 80%;
+    /*left: 45%;*/
+    /*bottom: 50%;*/
     z-index: 100;
     animation: 1s ease-out 0s 1 slideInFromLeft;
 }

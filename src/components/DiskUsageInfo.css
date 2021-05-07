@@ -1,0 +1,47 @@
+.DiskUsageInfo-container {
+    background-color: #d1717b;
+    padding: 10px;
+    display: inline-flex;
+    width: 100%
+}
+
+.DiskUsageInfo-label-wrapper {
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.DiskUsageInfo-label {
+    justify-self: center;
+    text-align: center;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+.DiskUsageInfo-slider {
+    flex-grow: 1;
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    margin: 0 10px;
+    position: relative;
+}
+.DiskUsageInfo-slider-line {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.53);
+    height: 3px;
+    display: flex;
+    position: absolute;
+    top: 30px;
+}
+.DiskUsageInfo-slider-head {
+    /*background-color: black;*/
+    /*width: 10px;*/
+    /*height: 28px;*/
+    position: absolute;
+    left: 25%;
+    border-radius: 5px;
+    top: 7px;
+}
+.DiskUsageInfo-number {
+    margin-top: 8px;
+}
