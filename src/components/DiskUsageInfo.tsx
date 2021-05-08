@@ -17,7 +17,7 @@ const DiskUsageInfo: React.FC = () => {
         <div className={mainContainerClass}>
             <div className={'DiskUsageInfo-label-wrapper'}>
                 <div className={'DiskUsageInfo-number'}>
-                    {((total - claimedByDog) / 1024 / 1024 / 1024).toFixed(1)} Gb
+                    {((total - claimedByDog) / 1000000000).toFixed(1)} Gb
                 </div>
                 <div className={'DiskUsageInfo-label'}>
                     free<br />
@@ -26,7 +26,7 @@ const DiskUsageInfo: React.FC = () => {
             </div>
             <div className={'DiskUsageInfo-label-wrapper'}>
                 <div className={'DiskUsageInfo-number'}>
-                    {((claimedByDog) / 1024 / 1024 / 1024).toFixed(1)} Gb
+                    {((claimedByDog) / 1000000000).toFixed(1)} Gb
                 </div>
                 <div className={'DiskUsageInfo-label'}>
                     Claimed by<br />
