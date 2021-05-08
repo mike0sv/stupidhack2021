@@ -13,8 +13,8 @@ interface MainState {
 const initialState: MainState = {
     dogState: 'intro',
     text: null,
-    claimedByDog: 1024 * 1024 * 1024 * 32.3,
-    total: 1024 * 1024 * 1024 * 44.5,
+    claimedByDog: 0,
+    total: 0,
 };
 
 export const mainSlice = createSlice({
@@ -40,10 +40,16 @@ const DELTA = 500 * 1024 * 1024;
 
 let timer: any = null;
 
+const loadFreeBytes = () => (window as any).Android?.freeBytes() ?? 1024 * 1024 * 1024 * 44.5;
+const loadClaimedBytes = () => (window as any).Android?.claimedBytes() ?? 1024 * 1024 * 1024 * 32.3;
+
 export const init = (): AppThunk => async (dispatch, rootStore) => {
+    dispatch(setClaimedByDog(loadClaimedBytes()))
+    dispatch(setTotal(loadFreeBytes()))
 }
 
 export const addDoge = (): AppThunk => async (dispatch, rootStore) => {
+
     let claimedByDog = rootStore().main.claimedByDog;
     let total = rootStore().main.total;
     let value = Math.min(claimedByDog + DELTA, total);

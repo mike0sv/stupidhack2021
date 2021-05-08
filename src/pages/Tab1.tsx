@@ -1,9 +1,9 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab1.css';
 import DiscUsageBar from '../components/DiscUsageBar';
 import { useDispatch, useSelector } from 'react-redux';
-import { addDoge, removeDoge, selectDogState, selectText } from '../reducers/main';
+import { addDoge, init, removeDoge, selectDogState, selectText } from '../reducers/main';
 import DogLogo from '../components/DogLogo';
 import DiskUsageInfo from '../components/DiskUsageInfo';
 
@@ -20,6 +20,12 @@ const Tab1: React.FC = () => {
         dispatch(removeDoge());
     }, [dispatch])
 
+    useEffect(() => {
+        console.log("lkmlkmlkm");
+
+        dispatch(init());
+    }, [dispatch]);
+
     return (
         <IonPage>
             <IonContent>
@@ -28,8 +34,12 @@ const Tab1: React.FC = () => {
                     <DiskUsageInfo />
                     <DiscUsageBar />
                     <div className={'Tab1-button-centered'}>
+                        <div className={'Tab1-button-wrapper'}>
                         <IonButton color="primary" onClick={addDogeClicked}>Ask for more space</IonButton>
-                        <IonButton color="primary" onClick={removeDogeClicked}>Give space bacc</IonButton>
+                        </div>
+                        <div className={'Tab1-button-wrapper'}>
+                        <IonButton color="danger" onClick={removeDogeClicked}>Give space bacc</IonButton>
+                        </div>
                     </div>
                     <IonHeader collapse="condense">
                         <IonToolbar>

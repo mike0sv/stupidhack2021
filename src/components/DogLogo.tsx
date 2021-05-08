@@ -31,11 +31,13 @@ const DogLogo: ({ state }: ContainerProps) => any = ({state, text}) => {
 
     return (
         <div className={'DogLogo-page'}>
+            <div className={'DogLogo-page-inner'}>
             <div className={'DogLogo-text'}>{text}</div>
             <img src={dogImage} className={dogClass}/>
             <img src={'/assets/disk1.png'} className={'DogLogo-disk1'}/>
             <img src={'/assets/disk2.png'} className={'DogLogo-disk2'}/>
             <img src={'/assets/disk3.png'} className={'DogLogo-disk3'}/>
+            </div>
         </div>
     )
 };
