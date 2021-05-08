@@ -91,7 +91,7 @@
     animation: .1s ease-out 0s infinite crazy;
 }
 .DogLogo-disk-crazy {
-    animation: .1s ease-in-out 0s infinite crazy-rotation;
+    animation: .1s ease-in-out 0s infinite crazy-rotation !important;
 }
 
 .DogLogo-disk1 {

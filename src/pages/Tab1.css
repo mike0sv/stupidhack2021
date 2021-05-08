@@ -40,6 +40,9 @@ ion-content ion-toolbar {
   margin-top: 10px;
   width: 100%;
 }
+.Tab1-button-wrapper-bottom {
+  width: 50%;
+}
 @keyframes shake-buttons {
   from {
     transform: translateX(-1%) translateY(-20px);

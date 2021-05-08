@@ -78,9 +78,6 @@ const Tab1: React.FC = () => {
                         <div className={premiumButtonClass}>
                             <IonButton color="warning" expand="block" onClick={() => setShowModal(true)} size={'large'}>Go premium</IonButton>
                         </div>
-                        {/*<IonButton color="warning" size={'small'} onClick={() => setShowModal(true)}>*/}
-                        {/*    <RubyIcon size={12} /> &nbsp;&nbsp; Go premium &nbsp;&nbsp;<RubyIcon size={12} />*/}
-                        {/*</IonButton>*/}
                     </div>
                 </div>
                 <IonModal isOpen={showModal} cssClass='my-custom-class'>

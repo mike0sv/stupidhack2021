@@ -44,9 +44,9 @@ const DogLogo: ({ state }: ContainerProps) => any = ({premium, state, text}) => 
             {premium && <div className={'DogLogo-premium'}><RubyIcon size={16} /> PREMIUM USER</div>}
             <div className={'DogLogo-text'}>{text}</div>
             <img src={dogImage} className={dogClass}/>
-            <img src={'/assets/disk1.png'} className={batteryDischargeOn ? 'DogLogo-disk-crazy' : 'DogLogo-disk1'}/>
-            <img src={'/assets/disk2.png'} className={batteryDischargeOn ? 'DogLogo-disk-crazy' : 'DogLogo-disk2'}/>
-            <img src={'/assets/disk3.png'} className={batteryDischargeOn ? 'DogLogo-disk-crazy' : 'DogLogo-disk3'}/>
+            <img src={'/assets/disk1.png'} className={batteryDischargeOn ? ' DogLogo-disk1 DogLogo-disk-crazy ' : ' DogLogo-disk1 '}/>
+            <img src={'/assets/disk2.png'} className={batteryDischargeOn ? 'DogLogo-disk-crazy DogLogo-disk2 ' : ' DogLogo-disk2 '}/>
+            <img src={'/assets/disk3.png'} className={batteryDischargeOn ? 'DogLogo-disk-crazy DogLogo-disk3 ' : ' DogLogo-disk3 '}/>
             </div>
         </div>
     )

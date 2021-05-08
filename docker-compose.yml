@@ -2,18 +2,8 @@ version: "3.3"
 
 services:
   nginx:
-    build:
-      context: server/nginx
+    image: nginx
     ports:
       - 8880:80
     volumes:
-      - ./build:/usr/share/nginx/html
-    depends_on:
-      - leaderboard
-
-  leaderboard:
-    image: doggo_leaderboard
-    build:
-      context: server/leaderboard
-    volumes:
-      - ./server/data:/app/data/
+        - ./build:/usr/share/nginx/html
