@@ -1,9 +1,17 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { IonButton, IonContent, IonHeader, IonModal, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab1.css';
 import DiscUsageBar from '../components/DiscUsageBar';
 import { useDispatch, useSelector } from 'react-redux';
-import { addDoge, init, removeDoge, selectDogState, selectText } from '../reducers/main';
+import {
+    addDoge,
+    init,
+    removeDoge,
+    selectBatteryDischargeOn,
+    selectDogState,
+    selectText,
+    switchBatteryDischarge
+} from '../reducers/main';
 import DogLogo from '../components/DogLogo';
 import DiskUsageInfo from '../components/DiskUsageInfo';
 import { RubyIcon } from '@primer/octicons-react';
@@ -14,6 +22,13 @@ const Tab1: React.FC = () => {
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
     const [isPremium, setIsPremium] = useState(false);
+    const batteryDischargeOn = useSelector(selectBatteryDischargeOn);
+    const buttonsContainerClass = useMemo(() => {
+        return batteryDischargeOn ? 'Tab1-button-centered Tab1-button-centered-crazy' : 'Tab1-button-centered';
+    }, [batteryDischargeOn]);
+    const premiumButtonClass = useMemo(() => {
+        return batteryDischargeOn ? 'Tab1-button-wrapper-bottom Tab1-button-premium-crazy' : 'Tab1-button-wrapper-bottom';
+    }, [batteryDischargeOn]);
 
     const addDogeClicked = useCallback(() => {
         dispatch(addDoge());
@@ -32,6 +47,10 @@ const Tab1: React.FC = () => {
         setIsPremium(value);
     }
 
+    const switchBatteryDischargeClicked = useCallback(() => {
+        dispatch(switchBatteryDischarge());
+    }, [dispatch])
+
     return (
         <IonPage>
             <IonContent>
@@ -39,7 +58,7 @@ const Tab1: React.FC = () => {
                 <div style={{ padding: '15px' }}>
                     <DiskUsageInfo />
                     <DiscUsageBar />
-                    <div className={'Tab1-button-centered'}>
+                    <div className={buttonsContainerClass}>
                         <div className={'Tab1-button-wrapper'}>
                             <IonButton color="primary" expand="block" onClick={addDogeClicked} size={'large'}>Ask for
                                 more space</IonButton>
@@ -49,10 +68,19 @@ const Tab1: React.FC = () => {
                                 space bacc</IonButton>
                         </div>
                     </div>
+                    <hr />
                     <div className={'Tab1-footer'}>
-                        <IonButton color="warning" size={'small'} onClick={() => setShowModal(true)}>
-                            <RubyIcon size={12} /> &nbsp;&nbsp; Go premium &nbsp;&nbsp;<RubyIcon size={12} />
-                        </IonButton>
+                        <div className={'Tab1-button-wrapper-bottom'}>
+                            <IonButton color="medium" expand="block" onClick={switchBatteryDischargeClicked} size={'large'}>
+                                {batteryDischargeOn ? 'STOP IT' : 'Battery discharge'}
+                            </IonButton>
+                        </div>
+                        <div className={premiumButtonClass}>
+                            <IonButton color="warning" expand="block" onClick={() => setShowModal(true)} size={'large'}>Go premium</IonButton>
+                        </div>
+                        {/*<IonButton color="warning" size={'small'} onClick={() => setShowModal(true)}>*/}
+                        {/*    <RubyIcon size={12} /> &nbsp;&nbsp; Go premium &nbsp;&nbsp;<RubyIcon size={12} />*/}
+                        {/*</IonButton>*/}
                     </div>
                 </div>
                 <IonModal isOpen={showModal} cssClass='my-custom-class'>

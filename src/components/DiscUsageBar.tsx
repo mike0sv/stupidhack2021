@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import './DiscUsageBar.css';
 import { IonProgressBar } from '@ionic/react';
 import { useSelector } from 'react-redux';
-import { selectClaimedByDog, selectTotal } from '../reducers/main';
+import { selectBatteryDischargeOn, selectClaimedByDog, selectTotal } from '../reducers/main';
 
 const DiscUsageBar: React.FC = () => {
+    const batteryDischargeOn = useSelector(selectBatteryDischargeOn);
+    const mainContainerClass = useMemo(() => {
+        return batteryDischargeOn ? 'DiskUsageBar-container-crazy' : '';
+    }, [batteryDischargeOn]);
 
     const total = useSelector(selectTotal);
     const claimedByDog = useSelector(selectClaimedByDog);
@@ -12,7 +16,7 @@ const DiscUsageBar: React.FC = () => {
     const ratio = (total - claimedByDog) / total;
 
     return (
-        <div className={'DiskUsageBar-container'}>
+        <div className={mainContainerClass}>
             <IonProgressBar value={ratio}></IonProgressBar><br />
         </div>
     )

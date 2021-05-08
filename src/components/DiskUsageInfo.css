@@ -4,7 +4,17 @@
     display: inline-flex;
     width: 100%
 }
-
+@keyframes shake-usage-info {
+    from {
+        transform: translateX(-10px) translateY(-10px);
+    }
+    to {
+        transform: translateX(0%) translateY(0%);
+    }
+}
+.DiskUsageInfo-container-crazy {
+    animation: .1s ease-out 0s infinite shake-usage-info;
+}
 .DiskUsageInfo-label-wrapper {
     flex-grow: 1;
     display: flex;

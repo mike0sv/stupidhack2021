@@ -8,6 +8,7 @@ interface MainState {
     text: string | null;
     claimedByDog: number;
     total: number;
+    batteryDischargeOn: boolean;
 }
 
 const initialState: MainState = {
@@ -15,6 +16,7 @@ const initialState: MainState = {
     text: null,
     claimedByDog: 0,
     total: 0,
+    batteryDischargeOn: false,
 };
 
 export const mainSlice = createSlice({
@@ -32,6 +34,9 @@ export const mainSlice = createSlice({
         },
         setClaimedByDog: (state, action: PayloadAction<number>) => {
             state.claimedByDog = action.payload;
+        },
+        setBatteryDischargeOn: (state, action: PayloadAction<boolean>) => {
+            state.batteryDischargeOn = action.payload;
         },
     },
 });
@@ -51,6 +56,21 @@ export const removeDoge = (): AppThunk => async (dispatch, rootStore) => {
     dispatch(setClaimedByDog(loadClaimedBytes()))
     dispatch(setTotal(loadFreeBytes()))
     dispatch(setDogState('shaking'));
+    dispatch(setText('YES GIVE IT BACC!'));
+    if (timer !== null) {
+        clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+        dispatch(setDogState('still'));
+        dispatch(setText(null));
+    }, 1200);
+}
+
+export const addDoge = (): AppThunk => async (dispatch, rootStore) => {
+    (window as any).Android?.takeFromDoggo();
+    dispatch(setClaimedByDog(loadClaimedBytes()))
+    dispatch(setTotal(loadFreeBytes()))
+    dispatch(setDogState('shaking'));
     dispatch(setText('NOO!'));
     if (timer !== null) {
         clearTimeout(timer);
@@ -65,28 +85,19 @@ export const removeDoge = (): AppThunk => async (dispatch, rootStore) => {
     }, 800);
 }
 
-export const addDoge = (): AppThunk => async (dispatch, rootStore) => {
-    (window as any).Android?.takeFromDoggo();
-    dispatch(setClaimedByDog(loadClaimedBytes()))
-    dispatch(setTotal(loadFreeBytes()))
-    dispatch(setDogState('shaking'));
-    dispatch(setText('YES GIVE IT BACC!'));
-    if (timer !== null) {
-        clearTimeout(timer);
-    }
-    timer = setTimeout(() => {
-        dispatch(setDogState('still'));
-        dispatch(setText(null));
-    }, 1200);
+export const switchBatteryDischarge = (): AppThunk => async (dispatch, rootStore) => {
+    // (window as any).Android?.takeFromDoggo(); // todo
+    dispatch(setBatteryDischargeOn(!rootStore().main.batteryDischargeOn))
 }
 
 export const {
-     setDogState, setText, setClaimedByDog, setTotal
+     setDogState, setText, setClaimedByDog, setTotal, setBatteryDischargeOn
 } = mainSlice.actions;
 
 export const selectTotal = (state: RootState): number => state.main.total;
 export const selectClaimedByDog = (state: RootState): number => state.main.claimedByDog;
 export const selectDogState = (state: RootState): DogState => state.main.dogState;
 export const selectText = (state: RootState): string | null => state.main.text;
+export const selectBatteryDischargeOn = (state: RootState): boolean => state.main.batteryDischargeOn;
 
 export default mainSlice.reducer;

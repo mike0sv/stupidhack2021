@@ -14,11 +14,20 @@ ion-content ion-toolbar {
 }
 .Tab1-footer {
   text-align: right;
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
 }
 .Tab1-premium-icon {
   width: 100%;
 }
 .Tab1-modal-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+.Tab1-modal-wrapper-bottom {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   padding: 15px;
@@ -30,4 +39,26 @@ ion-content ion-toolbar {
 .Tab1-modal-button-wrapper {
   margin-top: 10px;
   width: 100%;
+}
+@keyframes shake-buttons {
+  from {
+    transform: translateX(-1%) translateY(-20px);
+  }
+  to {
+    transform: translateX(0%) translateY(20px);
+  }
+}
+@keyframes shake-premium {
+  from {
+    transform: translateX(-10px) translateY(-5px);
+  }
+  to {
+    transform: translateX(10px) translateY(3px);
+  }
+}
+.Tab1-button-centered-crazy {
+  animation: .16s ease-in-out 0s infinite shake-buttons;
+}
+.Tab1-button-premium-crazy {
+  animation: .19s ease-in-out 0s infinite shake-premium;
 }

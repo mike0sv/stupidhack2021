@@ -17,10 +17,26 @@
 }
 @keyframes shake {
     from {
-        transform: translateX(-1%) translateY(-1%);
+        transform: translateX(-7%) translateY(-2%);
     }
     to {
-        transform: translateX(0%) translateY(0%);
+        transform: translateX(3%) translateY(4%);
+    }
+}
+@keyframes crazy {
+    from {
+        transform: translateX(-10%) translateY(-10%) rotate(0deg);
+    }
+    to {
+        transform: translateX(0%) translateY(0%) rotate(180deg);
+    }
+}
+@keyframes crazy-rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
     }
 }
 
@@ -70,6 +86,12 @@
 }
 .DogLogo-dog-shaking {
     animation: .1s ease-out 0s infinite shake;
+}
+.DogLogo-dog-crazy {
+    animation: .1s ease-out 0s infinite crazy;
+}
+.DogLogo-disk-crazy {
+    animation: .1s ease-in-out 0s infinite crazy-rotation;
 }
 
 .DogLogo-disk1 {

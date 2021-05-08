@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import './DogLogo.css';
-import { DogState } from '../reducers/main';
+import { DogState, selectBatteryDischargeOn } from '../reducers/main';
 import { RubyIcon } from '@primer/octicons-react';
-import { IonButton } from '@ionic/react';
+import { useSelector } from 'react-redux';
 
 
 interface ContainerProps {
@@ -12,7 +12,13 @@ interface ContainerProps {
 }
 
 const DogLogo: ({ state }: ContainerProps) => any = ({premium, state, text}) => {
+
+    const batteryDischargeOn = useSelector(selectBatteryDischargeOn);
+
     const dogClass = useMemo(() => {
+        if(batteryDischargeOn) {
+            return 'DogLogo-dog-front DogLogo-dog-crazy';
+        }
         switch (state) {
             case 'intro':
                 return 'DogLogo-dog-front DogLogo-dog-intro';
@@ -23,14 +29,14 @@ const DogLogo: ({ state }: ContainerProps) => any = ({premium, state, text}) => 
             default:
                 return 'DogLogo-dog-front';
         }
-    }, [state]);
+    }, [state, batteryDischargeOn]);
 
     const dogImage = useMemo(() => {
-        if(state === 'anxiety') {
+        if(state === 'anxiety' && !batteryDischargeOn) {
             return '/assets/dog-anxiety2.png';
         }
         return '/assets/dog.png'
-    }, [state])
+    }, [state, batteryDischargeOn])
 
     return (
         <div className={'DogLogo-page'}>
@@ -38,9 +44,9 @@ const DogLogo: ({ state }: ContainerProps) => any = ({premium, state, text}) => 
             {premium && <div className={'DogLogo-premium'}><RubyIcon size={16} /> PREMIUM USER</div>}
             <div className={'DogLogo-text'}>{text}</div>
             <img src={dogImage} className={dogClass}/>
-            <img src={'/assets/disk1.png'} className={'DogLogo-disk1'}/>
-            <img src={'/assets/disk2.png'} className={'DogLogo-disk2'}/>
-            <img src={'/assets/disk3.png'} className={'DogLogo-disk3'}/>
+            <img src={'/assets/disk1.png'} className={batteryDischargeOn ? 'DogLogo-disk-crazy' : 'DogLogo-disk1'}/>
+            <img src={'/assets/disk2.png'} className={batteryDischargeOn ? 'DogLogo-disk-crazy' : 'DogLogo-disk2'}/>
+            <img src={'/assets/disk3.png'} className={batteryDischargeOn ? 'DogLogo-disk-crazy' : 'DogLogo-disk3'}/>
             </div>
         </div>
     )
