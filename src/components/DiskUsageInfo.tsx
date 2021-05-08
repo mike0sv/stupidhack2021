@@ -25,7 +25,7 @@ const DiskUsageInfo: React.FC = () => {
                 </div>
                 <div className={'DiskUsageInfo-label'}>
                     Claimed by<br />
-                    the Greedy Dog
+                    Greedy Dog
                 </div>
             </div>
         </div>

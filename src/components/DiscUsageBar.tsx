@@ -9,7 +9,7 @@ const DiscUsageBar: React.FC = () => {
     const total = useSelector(selectTotal);
     const claimedByDog = useSelector(selectClaimedByDog);
 
-    const ratio = claimedByDog / total;
+    const ratio = (total - claimedByDog) / total;
 
     return (
         <div className={'DiskUsageBar-container'}>

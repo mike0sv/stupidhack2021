@@ -30,7 +30,7 @@ const Tab1: React.FC = () => {
         <IonPage>
             <IonContent>
                 <DogLogo state={dogState} text={text} />
-                <div style={{ padding: '10px' }}>
+                <div style={{ padding: '15px' }}>
                     <DiskUsageInfo />
                     <DiscUsageBar />
                     <div className={'Tab1-button-centered'}>
