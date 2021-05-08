@@ -6,4 +6,20 @@ services:
     ports:
       - 8880:80
     volumes:
-        - ./build:/usr/share/nginx/html
+      - ./build:/usr/share/nginx/html
+#  nginx:
+#    build:
+#      context: server/nginx
+#    ports:
+#      - 8880:80
+#    volumes:
+#      - ./build:/usr/share/nginx/html
+#    depends_on:
+#      - leaderboard
+#
+#  leaderboard:
+#    image: doggo_leaderboard
+#    build:
+#      context: server/leaderboard
+#    volumes:
+#      - ./server/data:/app/data/
