@@ -1,2 +1,2 @@
 ionic build
-docker-compose up
+docker-compose up --build -d
