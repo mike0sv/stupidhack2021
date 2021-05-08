@@ -9,5 +9,9 @@ ion-content ion-toolbar {
   margin-top: 20px;
 }
 .Tab1-button-wrapper {
-  padding: 15px;
+  padding: 2px;
+  width: 100%;
+}
+.Tab1-footer {
+  text-align: right;
 }

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addDoge, init, removeDoge, selectDogState, selectText } from '../reducers/main';
 import DogLogo from '../components/DogLogo';
 import DiskUsageInfo from '../components/DiskUsageInfo';
+import { RubyIcon } from '@primer/octicons-react';
 
 const Tab1: React.FC = () => {
     const dogState = useSelector(selectDogState);
@@ -21,7 +22,7 @@ const Tab1: React.FC = () => {
     }, [dispatch])
 
     useEffect(() => {
-        console.log("lkmlkmlkm");
+        console.log('lkmlkmlkm');
 
         dispatch(init());
     }, [dispatch]);
@@ -35,19 +36,20 @@ const Tab1: React.FC = () => {
                     <DiscUsageBar />
                     <div className={'Tab1-button-centered'}>
                         <div className={'Tab1-button-wrapper'}>
-                        <IonButton color="primary" onClick={addDogeClicked}>Ask for more space</IonButton>
+                            <IonButton color="primary" expand="block" onClick={addDogeClicked} size={'large'}>Ask for
+                                more space</IonButton>
                         </div>
                         <div className={'Tab1-button-wrapper'}>
-                        <IonButton color="danger" onClick={removeDogeClicked}>Give space bacc</IonButton>
+                            <IonButton color="danger" expand="block" onClick={removeDogeClicked} size={'large'}>Give
+                                space bacc</IonButton>
                         </div>
                     </div>
-                    <IonHeader collapse="condense">
-                        <IonToolbar>
-                            <IonTitle size="large">Tab 1</IonTitle>
-                        </IonToolbar>
-                    </IonHeader>
-                    <pre>
-                </pre>
+                    <div className={'Tab1-footer'}>
+                        <IonButton color="warning" size={'small'} onClick={removeDogeClicked}>
+                            <RubyIcon size={12} /> &nbsp;&nbsp;Go premium &nbsp;&nbsp;<RubyIcon size={12} />
+                        </IonButton>
+
+                    </div>
                 </div>
             </IonContent>
         </IonPage>
