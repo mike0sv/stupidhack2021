@@ -17,10 +17,10 @@
 }
 @keyframes shake {
     from {
-        transform: translateX(-7%) translateY(-2%);
+        transform: translateX(-1%) translateY(-1%);
     }
     to {
-        transform: translateX(3%) translateY(4%);
+        transform: translateX(0%) translateY(0%);
     }
 }
 @keyframes crazy {
