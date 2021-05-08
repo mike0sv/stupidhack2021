@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect } from 'react';
-import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { IonButton, IonContent, IonHeader, IonModal, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab1.css';
 import DiscUsageBar from '../components/DiscUsageBar';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,6 +12,8 @@ const Tab1: React.FC = () => {
     const dogState = useSelector(selectDogState);
     const text = useSelector(selectText);
     const dispatch = useDispatch();
+    const [showModal, setShowModal] = useState(false);
+    const [isPremium, setIsPremium] = useState(false);
 
     const addDogeClicked = useCallback(() => {
         dispatch(addDoge());
@@ -25,10 +27,15 @@ const Tab1: React.FC = () => {
         dispatch(init());
     }, [dispatch]);
 
+    const setPremium = (value: boolean) => {
+        setShowModal(false);
+        setIsPremium(value);
+    }
+
     return (
         <IonPage>
             <IonContent>
-                <DogLogo state={dogState} text={text} />
+                <DogLogo state={dogState} text={text} premium={isPremium} />
                 <div style={{ padding: '15px' }}>
                     <DiskUsageInfo />
                     <DiscUsageBar />
@@ -43,11 +50,28 @@ const Tab1: React.FC = () => {
                         </div>
                     </div>
                     <div className={'Tab1-footer'}>
-                        <IonButton color="warning" size={'small'} onClick={removeDogeClicked}>
+                        <IonButton color="warning" size={'small'} onClick={() => setShowModal(true)}>
                             <RubyIcon size={12} /> &nbsp;&nbsp; Go premium &nbsp;&nbsp;<RubyIcon size={12} />
                         </IonButton>
                     </div>
                 </div>
+                <IonModal isOpen={showModal} cssClass='my-custom-class'>
+                    <div className={'Tab1-modal-wrapper'}>
+                        <p className={'Tab1-modal-text'}>Today with our special offer you might have a premium account
+                            absolutely free!</p>
+                        <img src={'/assets/premium.png'} className={'Tab1-premium-icon'} />
+
+                        <div className={'Tab1-modal-button-wrapper'}>
+                            <IonButton onClick={() => setPremium(true)} color={'warning'} expand="block">
+                                <RubyIcon size={12} /> &nbsp;&nbsp; Activate premium &nbsp;&nbsp;<RubyIcon size={12} />
+                            </IonButton>
+                        </div>
+                        <div className={'Tab1-modal-button-wrapper'}>
+                            <IonButton onClick={() => setPremium(false)} color={'medium'} expand="block">Stay with regular
+                                account</IonButton>
+                        </div>
+                    </div>
+                </IonModal>
             </IonContent>
         </IonPage>
     );

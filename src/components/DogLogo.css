@@ -100,3 +100,12 @@
     animation: rotationLeft 2s infinite linear;
 
 }
+
+.DogLogo-premium {
+    /*font-family: 'Comic sans';*/
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    color: yellow;
+    font-size: small;
+}

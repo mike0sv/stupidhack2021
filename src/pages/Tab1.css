@@ -15,3 +15,19 @@ ion-content ion-toolbar {
 .Tab1-footer {
   text-align: right;
 }
+.Tab1-premium-icon {
+  width: 100%;
+}
+.Tab1-modal-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+.Tab1-modal-text {
+  padding: 10px 0;
+  font-size: large;
+}
+.Tab1-modal-button-wrapper {
+  margin-top: 10px;
+  width: 100%;
+}
