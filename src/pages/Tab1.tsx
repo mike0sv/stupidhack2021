@@ -46,7 +46,7 @@ const Tab1: React.FC = () => {
                     </div>
                     <div className={'Tab1-footer'}>
                         <IonButton color="warning" size={'small'} onClick={removeDogeClicked}>
-                            <RubyIcon size={12} /> &nbsp;&nbsp;Go premium &nbsp;&nbsp;<RubyIcon size={12} />
+                            <RubyIcon size={12} /> &nbsp;&nbsp; Go premium &nbsp;&nbsp;<RubyIcon size={12} />
                         </IonButton>
 
                     </div>

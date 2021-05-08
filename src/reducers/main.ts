@@ -36,8 +36,6 @@ export const mainSlice = createSlice({
     },
 });
 
-const DELTA = 500 * 1024 * 1024;
-
 let timer: any = null;
 
 const loadFreeBytes = () => (window as any).Android?.freeBytes() ?? 1024 * 1024 * 1024 * 44.5;
@@ -48,12 +46,10 @@ export const init = (): AppThunk => async (dispatch, rootStore) => {
     dispatch(setTotal(loadFreeBytes()))
 }
 
-export const addDoge = (): AppThunk => async (dispatch, rootStore) => {
-
-    let claimedByDog = rootStore().main.claimedByDog;
-    let total = rootStore().main.total;
-    let value = Math.min(claimedByDog + DELTA, total);
-    dispatch(setClaimedByDog(value));
+export const removeDoge = (): AppThunk => async (dispatch, rootStore) => {
+    (window as any).Android?.giveToDoggo();
+    dispatch(setClaimedByDog(loadClaimedBytes()))
+    dispatch(setTotal(loadFreeBytes()))
     dispatch(setDogState('shaking'));
     dispatch(setText('NOO!'));
     if (timer !== null) {
@@ -69,10 +65,10 @@ export const addDoge = (): AppThunk => async (dispatch, rootStore) => {
     }, 800);
 }
 
-export const removeDoge = (): AppThunk => async (dispatch, rootStore) => {
-    let claimedByDog = rootStore().main.claimedByDog;
-    let value = Math.max(claimedByDog - DELTA, 0);
-    dispatch(setClaimedByDog(value));
+export const addDoge = (): AppThunk => async (dispatch, rootStore) => {
+    (window as any).Android?.takeFromDoggo();
+    dispatch(setClaimedByDog(loadClaimedBytes()))
+    dispatch(setTotal(loadFreeBytes()))
     dispatch(setDogState('shaking'));
     dispatch(setText('YES GIVE IT BACC!'));
     if (timer !== null) {
