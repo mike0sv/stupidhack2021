@@ -1,7 +1,5 @@
 import React from 'react';
 import './DiskUsageInfo.css';
-import { IonIcon } from '@ionic/react';
-import { ChevronDownIcon, TriangleDownIcon } from '@primer/octicons-react';
 
 
 const DiskUsageInfo: React.FC = () => {

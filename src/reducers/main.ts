@@ -69,7 +69,7 @@ export const addDoge = (): AppThunk => async (dispatch, rootStore) => {
     dispatch(setDogUsage(value));
     dispatch(setDogState('shaking'));
     dispatch(setText('NOO!'));
-    if(timer !== null) {
+    if (timer !== null) {
         clearTimeout(timer);
     }
     timer = setTimeout(() => {
@@ -80,6 +80,25 @@ export const addDoge = (): AppThunk => async (dispatch, rootStore) => {
             dispatch(setText(null));
         }, 1200);
     }, 800);
+}
+
+export const removeDoge = (): AppThunk => async (dispatch, rootStore) => {
+    let usage = await Storage.get({ key: DOG_USAGE_KEY });
+    let value = parseFloat(usage.value ?? '0') - DELTA;
+    if (value < 0) {
+        value = 0;
+    }
+    await Storage.set({ key: DOG_USAGE_KEY, value: value.toString() })
+    dispatch(setDogUsage(value));
+    dispatch(setDogState('shaking'));
+    dispatch(setText('YES GIVE IT BACC!'));
+    if (timer !== null) {
+        clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+        dispatch(setDogState('still'));
+        dispatch(setText(null));
+    }, 1200);
 }
 
 export const addNewFile = (): AppThunk => async (dispatch, rootStore) => {

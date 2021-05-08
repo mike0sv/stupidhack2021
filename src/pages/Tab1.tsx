@@ -1,16 +1,14 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
+import React, { useCallback } from 'react';
+import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab1.css';
 import DiscUsageBar from '../components/DiscUsageBar';
 import { useDispatch, useSelector } from 'react-redux';
-import { addDoge, addNewFile, selectDogState, selectDogUsage, selectFiles, selectText } from '../reducers/main';
+import { addDoge, removeDoge, selectDogState, selectDogUsage, selectText } from '../reducers/main';
 import DogLogo from '../components/DogLogo';
 import DiskUsageInfo from '../components/DiskUsageInfo';
 
 const Tab1: React.FC = () => {
     const dogUsage = useSelector(selectDogUsage);
-    const files = useSelector(selectFiles);
     const dogState = useSelector(selectDogState);
     const text = useSelector(selectText);
     const dispatch = useDispatch();
@@ -19,17 +17,12 @@ const Tab1: React.FC = () => {
         dispatch(addDoge());
     }, [dispatch])
 
-    const addNewFileClicked = useCallback(() => {
-        dispatch(addNewFile());
+    const removeDogeClicked = useCallback(() => {
+        dispatch(removeDoge());
     }, [dispatch])
 
     return (
         <IonPage>
-            {/*<IonHeader>*/}
-            {/*    <IonToolbar>*/}
-            {/*        <IonTitle>Tab 1</IonTitle>*/}
-            {/*    </IonToolbar>*/}
-            {/*</IonHeader>*/}
             <IonContent>
                 <DogLogo state={dogState} text={text} />
                 <div style={{ padding: '10px' }}>
@@ -37,7 +30,7 @@ const Tab1: React.FC = () => {
                     <DiscUsageBar dogUsage={dogUsage} />
                     <div className={'Tab1-button-centered'}>
                         <IonButton color="primary" onClick={addDogeClicked}>Ask for more space</IonButton>
-                        <IonButton color="primary" onClick={addDogeClicked}>Give space bacc</IonButton>
+                        <IonButton color="primary" onClick={removeDogeClicked}>Give space bacc</IonButton>
                     </div>
                     <IonHeader collapse="condense">
                         <IonToolbar>
@@ -45,9 +38,7 @@ const Tab1: React.FC = () => {
                         </IonToolbar>
                     </IonHeader>
                     <pre>
-                    {/*{JSON.stringify(files)}*/}
                 </pre>
-                    {/*<IonButton color="primary" onClick={addNewFileClicked}>Add file</IonButton>*/}
                 </div>
             </IonContent>
         </IonPage>
