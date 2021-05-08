@@ -13,7 +13,7 @@ const DiscUsageBar: React.FC = () => {
     const total = useSelector(selectTotal);
     const claimedByDog = useSelector(selectClaimedByDog);
 
-    const ratio = (total - claimedByDog) / total;
+    const ratio = (claimedByDog) / total;
 
     return (
         <div className={mainContainerClass}>
