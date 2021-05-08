@@ -22,8 +22,6 @@ const Tab1: React.FC = () => {
     }, [dispatch])
 
     useEffect(() => {
-        console.log('lkmlkmlkm');
-
         dispatch(init());
     }, [dispatch]);
 
@@ -48,7 +46,6 @@ const Tab1: React.FC = () => {
                         <IonButton color="warning" size={'small'} onClick={removeDogeClicked}>
                             <RubyIcon size={12} /> &nbsp;&nbsp; Go premium &nbsp;&nbsp;<RubyIcon size={12} />
                         </IonButton>
-
                     </div>
                 </div>
             </IonContent>
