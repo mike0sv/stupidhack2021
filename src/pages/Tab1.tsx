@@ -4,19 +4,18 @@ import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 import DiscUsageBar from '../components/DiscUsageBar';
 import { useDispatch, useSelector } from 'react-redux';
-import { addDoge, addNewFile, selectDogUsage, selectFiles } from '../reducers/main';
+import { addDoge, addNewFile, selectDogState, selectDogUsage, selectFiles, selectText } from '../reducers/main';
 import DogLogo from '../components/DogLogo';
 import DiskUsageInfo from '../components/DiskUsageInfo';
-
 
 const Tab1: React.FC = () => {
     const dogUsage = useSelector(selectDogUsage);
     const files = useSelector(selectFiles);
+    const dogState = useSelector(selectDogState);
+    const text = useSelector(selectText);
     const dispatch = useDispatch();
 
     const addDogeClicked = useCallback(() => {
-        console.log('lklkmlk');
-
         dispatch(addDoge());
     }, [dispatch])
 
@@ -32,12 +31,13 @@ const Tab1: React.FC = () => {
             {/*    </IonToolbar>*/}
             {/*</IonHeader>*/}
             <IonContent>
-                <DogLogo />
-                <div style={{padding: '10px'}}>
+                <DogLogo state={dogState} text={text} />
+                <div style={{ padding: '10px' }}>
                     <DiskUsageInfo />
                     <DiscUsageBar dogUsage={dogUsage} />
                     <div className={'Tab1-button-centered'}>
-                    <IonButton color="primary" onClick={addDogeClicked}>Ask for more</IonButton>
+                        <IonButton color="primary" onClick={addDogeClicked}>Ask for more space</IonButton>
+                        <IonButton color="primary" onClick={addDogeClicked}>Give space bacc</IonButton>
                     </div>
                     <IonHeader collapse="condense">
                         <IonToolbar>

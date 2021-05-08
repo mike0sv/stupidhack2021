@@ -9,27 +9,20 @@ const DiskUsageInfo: React.FC = () => {
         <div className={'DiskUsageInfo-container'}>
             <div className={'DiskUsageInfo-label-wrapper'}>
                 <div className={'DiskUsageInfo-number'}>
-                    33.2 Gb
-                </div>
-                <div className={'DiskUsageInfo-label'}>
-                    Greedy dog<br />
-                    share
-                </div>
-            </div>
-            {/*<div className={'DiskUsageInfo-slider'}>*/}
-            {/*    <div className={'DiskUsageInfo-slider-line'}>*/}
-            {/*    </div>*/}
-            {/*    <div className={'DiskUsageInfo-slider-head'}>*/}
-            {/*        <TriangleDownIcon size={32} />*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-            <div className={'DiskUsageInfo-label-wrapper'}>
-                <div className={'DiskUsageInfo-number'}>
                     1.2 Gb
                 </div>
                 <div className={'DiskUsageInfo-label'}>
-                    Your<br />
-                    share
+                    free<br />
+                    disk space
+                </div>
+            </div>
+            <div className={'DiskUsageInfo-label-wrapper'}>
+                <div className={'DiskUsageInfo-number'}>
+                    33.2 Gb
+                </div>
+                <div className={'DiskUsageInfo-label'}>
+                    Claimed by<br />
+                    the Greedy Dog
                 </div>
             </div>
         </div>
