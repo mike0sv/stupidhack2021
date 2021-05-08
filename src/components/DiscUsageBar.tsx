@@ -1,45 +1,19 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React from 'react';
 import './DiscUsageBar.css';
-import {IonProgressBar, IonContent} from '@ionic/react';
-import {DeviceInfo, Plugins} from "@capacitor/core";
+import { IonProgressBar } from '@ionic/react';
+import { useSelector } from 'react-redux';
+import { selectClaimedByDog, selectTotal } from '../reducers/main';
 
-interface ContainerProps {
-    dogUsage: number
-}
+const DiscUsageBar: React.FC = () => {
 
-const {Device} = Plugins;
+    const total = useSelector(selectTotal);
+    const claimedByDog = useSelector(selectClaimedByDog);
 
-
-const DiscUsageBar: React.FC<ContainerProps> = ({dogUsage}) => {
-
-    const [info, setInfo] = useState<DeviceInfo | null>(null)
-
-    useEffect(() => {
-        async function getInfo() {
-            let response = await Device.getInfo();
-            setInfo(response);
-        }
-
-        getInfo()
-    }, [])
-
-    let total = info?.diskTotal ?? 1000;
-    let free = info?.diskFree ?? 500;
-    let withoutDogs = total - free - dogUsage;
-    let withoutDogsRatio = withoutDogs / total;
-    let ratio = (total - free) / total;
+    const ratio = claimedByDog / total;
 
     return (
         <div className={'DiskUsageBar-container'}>
-            <div>
-                {/*<pre>*/}
-                {/*    {JSON.stringify(info, undefined, 2)}*/}
-                {/*</pre>*/}
-                {/*<pre>{JSON.stringify(dogUsage, undefined, 2)}</pre>*/}
-            </div>
-
-            <IonProgressBar value={withoutDogsRatio} buffer={ratio}></IonProgressBar><br/>
-
+            <IonProgressBar value={ratio}></IonProgressBar><br />
         </div>
     )
 };

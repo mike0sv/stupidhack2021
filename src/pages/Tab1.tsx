@@ -3,12 +3,11 @@ import { IonButton, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from 
 import './Tab1.css';
 import DiscUsageBar from '../components/DiscUsageBar';
 import { useDispatch, useSelector } from 'react-redux';
-import { addDoge, removeDoge, selectDogState, selectDogUsage, selectText } from '../reducers/main';
+import { addDoge, removeDoge, selectDogState, selectText } from '../reducers/main';
 import DogLogo from '../components/DogLogo';
 import DiskUsageInfo from '../components/DiskUsageInfo';
 
 const Tab1: React.FC = () => {
-    const dogUsage = useSelector(selectDogUsage);
     const dogState = useSelector(selectDogState);
     const text = useSelector(selectText);
     const dispatch = useDispatch();
@@ -27,7 +26,7 @@ const Tab1: React.FC = () => {
                 <DogLogo state={dogState} text={text} />
                 <div style={{ padding: '10px' }}>
                     <DiskUsageInfo />
-                    <DiscUsageBar dogUsage={dogUsage} />
+                    <DiscUsageBar />
                     <div className={'Tab1-button-centered'}>
                         <IonButton color="primary" onClick={addDogeClicked}>Ask for more space</IonButton>
                         <IonButton color="primary" onClick={removeDogeClicked}>Give space bacc</IonButton>
