@@ -9,16 +9,17 @@ ion-content ion-toolbar {
   margin-top: 20px;
 }
 .Tab1-button-wrapper {
-  padding: 2px;
+  padding: 10px 0;
   width: 100%;
 }
 .Tab1-footer {
   text-align: right;
   display: inline-flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 .Tab1-premium-icon {
+  margin-top: 60px;
   width: 100%;
 }
 .Tab1-modal-wrapper {

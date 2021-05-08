@@ -68,27 +68,26 @@ const Tab1: React.FC = () => {
                                 space bacc</IonButton>
                         </div>
                     </div>
-                    <hr />
                     <div className={'Tab1-footer'}>
-                        <div className={'Tab1-button-wrapper-bottom'}>
-                            <IonButton color="medium" expand="block" onClick={switchBatteryDischargeClicked} size={'large'}>
-                                {batteryDischargeOn ? 'STOP IT' : 'Battery discharge'}
-                            </IonButton>
-                        </div>
+                        {/*<div className={'Tab1-button-wrapper-bottom'}>*/}
+                        {/*    <IonButton color="medium" expand="block" onClick={switchBatteryDischargeClicked} size={'large'}>*/}
+                        {/*        {batteryDischargeOn ? 'STOP IT' : 'Battery discharge'}*/}
+                        {/*    </IonButton>*/}
+                        {/*</div>*/}
                         <div className={premiumButtonClass}>
-                            <IonButton color="warning" expand="block" onClick={() => setShowModal(true)} size={'large'}>Go premium</IonButton>
+                            <IonButton color="warning" expand="block" onClick={() => setShowModal(true)} size={'small'}>Go premium</IonButton>
                         </div>
                     </div>
                 </div>
                 <IonModal isOpen={showModal} cssClass='my-custom-class'>
                     <div className={'Tab1-modal-wrapper'}>
-                        <p className={'Tab1-modal-text'}>Today with our special offer you might have a premium account
-                            absolutely free!</p>
+                        {/*<p className={'Tab1-modal-text'}>Today with our special offer you might have a premium account*/}
+                        {/*    absolutely free!</p>*/}
                         <img src={'/assets/premium.png'} className={'Tab1-premium-icon'} />
 
                         <div className={'Tab1-modal-button-wrapper'}>
                             <IonButton onClick={() => setPremium(true)} color={'warning'} expand="block">
-                                <RubyIcon size={12} /> &nbsp;&nbsp; Activate premium &nbsp;&nbsp;<RubyIcon size={12} />
+                                <RubyIcon size={12} /> &nbsp;&nbsp; Buy premium &nbsp;&nbsp;<RubyIcon size={12} />
                             </IonButton>
                         </div>
                         <div className={'Tab1-modal-button-wrapper'}>
